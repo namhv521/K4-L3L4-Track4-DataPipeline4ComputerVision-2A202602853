@@ -33,8 +33,30 @@ Liệt kê **ít nhất 4 khác biệt** giữa telemetry nguồn A và nguồn 
 ### Câu 2
 Pipeline đưa hai nguồn về một schema như thế nào (đơn vị, kiểu thời gian, **độ lệch đồng hồ**)? Bằng chứng nào trong kết quả bước 2 cho thấy đã đúng? Dán bảng quarantine của bạn (số dòng theo từng lý do, từng drive) và giải thích vì sao dòng lỗi vào `rejects` thay vì bị xoá.
 
-(trả lời ở đây)
 
+> 1. Pipeline chuẩn hóa hai nguồn về cùng một schema:
+>   - Tên cột: Chuyển các tên cột khác nhau (speed_mps/spd_kmh, lat/latitude, lon/longitude) về cùng cấu trúc.
+>   - Đơn vị: Chuẩn hóa tốc độ về m/s, trong đó nguồn B được chuyển từ km/h sang m/s bằng cách chia cho 3,6. Các giá trị chân ga, phanh cũng được chuẩn hóa về cùng thang đo.
+>   - Thời gian: Chuyển timestamp của cả hai nguồn về kiểu thời gian UTC thống nhất. Nguồn A dùng ISO 8601, nguồn B dùng Unix milliseconds.
+>   - Độ lệch đồng hồ: Nguồn B có đồng hồ nhanh hơn 1,5 giây, nên pipeline trừ 1,5 giây để đồng bộ telemetry với video
+> 2. Các bằng chứng cho thấy bước 2 đúng: 
+> - Silver có 6.149 dòng hợp lệ, Rejects có 106 dòng lỗi.
+> - Drive A: 2.968 + 53 = 3.021 dòng ban đầu.
+> - Drive B: 3.181 + 53 = 3.234 dòng ban đầu.
+> - Tốc độ tối đa sau chuẩn hóa: A = 71 km/h, B = 100 km/h, đều dưới 130 km/h.
+> - Timestamp đầu tiên của B là 2025-10-08 14:30:00.009 UTC, lệch thời điểm bắt đầu video dưới 0,5 giây.
+> - Kiểm tra tự động đạt 7/7 PASS. dbt test có 6 PASS, 1 WARN (max_gap_ms cảnh báo mất tín hiệu nhưng không làm dừng pipeline).
+> 3. Bảng quarantine 
+>   drive_id | reject_reason | so_dong
+>   -------- | --------------|  ------
+>   drive_a  | duplicate          | 20     
+>   drive_a  | speed_missing      | 30     
+>   drive_a  | speed_out_of_range | 3      
+>   drive_b  | duplicate          | 20     
+>   drive_b  | speed_missing      | 30     
+>   drive_b  | speed_out_of_range | 3 
+> 4. dòng lỗi vào rejects thay vì bị xóa vì: 
+> Các dòng lỗi được đưa vào silver.telemetry_rejects để bảo toàn dữ liệu, truy vết nguyên nhân và hỗ trợ kiểm tra, xử lý lại khi cần. Nếu xóa trực tiếp sẽ mất bằng chứng về chất lượng dữ liệu nguồn
 ### Câu 3
 Vì sao test `max_gap_ms` là `warn` còn `in_range` là `error`? Kết quả thí nghiệm `break-gate` của bạn (`break_gate.json`): test nào bắt được, bao nhiêu dòng, và điều đó cho biết gì về vai trò của "cổng chất lượng"?
 
