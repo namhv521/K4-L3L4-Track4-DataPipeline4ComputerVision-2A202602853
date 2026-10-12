@@ -57,6 +57,7 @@ Pipeline đưa hai nguồn về một schema như thế nào (đơn vị, kiểu
 >   drive_b  | speed_out_of_range | 3 
 > 4. dòng lỗi vào rejects thay vì bị xóa vì: 
 > Các dòng lỗi được đưa vào silver.telemetry_rejects để bảo toàn dữ liệu, truy vết nguyên nhân và hỗ trợ kiểm tra, xử lý lại khi cần. Nếu xóa trực tiếp sẽ mất bằng chứng về chất lượng dữ liệu nguồn
+
 ### Câu 3
 Vì sao test `max_gap_ms` là `warn` còn `in_range` là `error`? Kết quả thí nghiệm `break-gate` của bạn (`break_gate.json`): test nào bắt được, bao nhiêu dòng, và điều đó cho biết gì về vai trò của "cổng chất lượng"?
 
