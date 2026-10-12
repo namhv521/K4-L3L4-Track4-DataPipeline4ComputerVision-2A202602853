@@ -4,9 +4,9 @@
 
 | | |
 |---|---|
-| Họ và tên | `<điền>` |
-| MSSV (đúng bằng `LAB_STUDENT_ID` trong `.env`) | `<điền>` |
-| GitHub | `<điền: tên tài khoản>` |
+| Họ và tên | Hoàng Văn Nam |
+| MSSV (đúng bằng `LAB_STUDENT_ID` trong `.env`) | 2A202602853 |
+| GitHub | https://github.com/namhv521/K4-L3L4-Track4-DataPipeline4ComputerVision-2A202602853 |
 | Trip dùng cho bài tập sập và chạy lại (xem GUIDE, bước 5) | `<điền: trip-xxxxx>` |
 
 ## Kết quả cuối
