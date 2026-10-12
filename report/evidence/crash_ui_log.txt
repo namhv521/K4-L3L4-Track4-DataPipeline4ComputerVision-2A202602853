@@ -25,10 +25,10 @@
       - generic "Toggle Dark Mode (experimental)":
         - text: 
         - generic: 
-      - link "16:05 UTC":
+      - link "16:54 UTC":
         - /url: "#"
         - time:
-          - text: 16:05
+          - text: 16:54
           - strong: UTC
       - link "LU":
         - /url: "#"
@@ -45,22 +45,22 @@
     - text: "Next Run ID:"
     - time: None
 - link "Trigger DAG":
-  - /url: /dags/day09_video_pipeline/trigger?origin=%2Fdags%2Fday09_video_pipeline%2Fgrid%3Ftab%3Dgraph%26dag_run_id%3Dmanual__2026-10-12T16%253A02%253A58%252B00%253A00
+  - /url: /dags/day09_video_pipeline/trigger?origin=%2Fdags%2Fday09_video_pipeline%2Fgrid%3Fexecution_date%3D2026-10-12T16%253A51%253A09%252B00%253A00%26tab%3Dgraph%26dag_run_id%3Dmanual__2026-10-12T16%253A51%253A09%252B00%253A00
   - generic: play_arrow
 - link "Reparse DAG":
-  - /url: /parseDagFile/Ii9vcHQvYWlyZmxvdy9kYWdzL2RheTA5X3ZpZGVvX3BpcGVsaW5lLnB5Ig.U-tBJakbmj3i8d0K7O_l196pbqg?redirect_url=%2Fdags%2Fday09_video_pipeline%2Fgrid
+  - /url: /parseDagFile/Ii9vcHQvYWlyZmxvdy9kYWdzL2RheTA5X3ZpZGVvX3BpcGVsaW5lLnB5Ig.mUWYs5eUSAApopjXXPjy0lRPO3E?redirect_url=%2Fdags%2Fday09_video_pipeline%2Fgrid
   - generic: restore_page
 - link "Delete DAG":
   - /url: /delete?dag_id=day09_video_pipeline&redirect_url=%2Fdags%2Fday09_video_pipeline%2Fgrid
   - generic: delete_outline
 - region:
   - textbox: 2026-10-12
-  - textbox: 16:03:20
+  - textbox: 16:51:09
   - generic: All Run Types
   - combobox
   - generic: All Run States
   - combobox
-  - button "Reset filters" [disabled]: Clear Filters
+  - button "Reset filters": Clear Filters
   - generic: Auto-refresh
   - checkbox "Auto-refresh"
   - combobox "Number of runs to display in grid":
@@ -139,14 +139,14 @@
     - heading "day09_video_pipeline" [level=3]
     - paragraph: /
     - heading "Run" [level=5]
-    - heading "2026-10-12, 16:02:58 UTC" [level=3]:
-      - time: 2026-10-12, 16:02:58 UTC
+    - heading "2026-10-12, 16:51:09 UTC" [level=3]:
+      - time: 2026-10-12, 16:51:09 UTC
     - paragraph: /
     - heading "Task" [level=5]
     - heading "silver_frames []" [level=3]
     - paragraph: /
     - heading "Map Index" [level=5]
-    - heading "9" [level=3]
+    - heading "19" [level=3]
 - button "Clear and retry task.": Clear task
 - button "Manually set task instance state":
   - text: Mark state as…
@@ -176,14 +176,14 @@
   - combobox
   - generic: All File Sources
   - combobox
-  - checkbox "Wrap" [checked]
+  - checkbox "Wrap"
   - strong: Wrap
   - link "Download":
-    - /url: /get_logs_with_metadata?dag_id=day09_video_pipeline&task_id=silver_frames&execution_date=2026-10-12T16%3A02%3A58%2B00%3A00&map_index=9&try_number=1&format=file
+    - /url: /get_logs_with_metadata?dag_id=day09_video_pipeline&task_id=silver_frames&execution_date=2026-10-12T16%3A51%3A09%2B00%3A00&map_index=19&try_number=1&format=file
   - link "See More":
-    - /url: /log?dag_id=day09_video_pipeline&task_id=silver_frames&execution_date=2026-10-12T16%3A02%3A58%2B00%3A00&map_index=9
+    - /url: /log?dag_id=day09_video_pipeline&task_id=silver_frames&execution_date=2026-10-12T16%3A51%3A09%2B00%3A00&map_index=19
   - code:
-    - generic: "3070eaa5ac21 ▶ Log message source details [2026-10-12, 16:03:47 UTC] {local_task_job_runner.py:123} ▶ Pre task execution logs [2026-10-12, 16:03:47 UTC] {subprocess.py:78} INFO - Tmp dir root location: /tmp [2026-10-12, 16:03:47 UTC] {subprocess.py:88} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/*** && /home/airflow/***-venv/bin/python -m pipeline.cli extract --trip trip-03904'] [2026-10-12, 16:03:47 UTC] {subprocess.py:99} INFO - Output: [2026-10-12, 16:03:48 UTC] {subprocess.py:106} INFO - Traceback (most recent call last): [2026-10-12, 16:03:48 UTC] {subprocess.py:106} INFO - File \"<frozen runpy>\", line 198, in _run_module_as_main [2026-10-12, 16:03:48 UTC] {subprocess.py:106} INFO - File \"<frozen runpy>\", line 88, in _run_code [2026-10-12, 16:03:48 UTC] {subprocess.py:106} INFO - File \"/opt/***/pipeline/cli.py\", line 65, in <module> [2026-10-12, 16:03:48 UTC] {subprocess.py:106} INFO - rc = main() [2026-10-12, 16:03:48 UTC] {subprocess.py:106} INFO - ^^^^^^ [2026-10-12, 16:03:48 UTC] {subprocess.py:106} INFO - File \"/opt/***/pipeline/cli.py\", line 59, in main [2026-10-12, 16:03:48 UTC] {subprocess.py:106} INFO - out = frames.extract_trip(a.trip) [2026-10-12, 16:03:48 UTC] {subprocess.py:106} INFO - ^^^^^^^^^^^^^^^^^^^^^^^^^^^ [2026-10-12, 16:03:48 UTC] {subprocess.py:106} INFO - File \"/opt/***/pipeline/frames.py\", line 66, in extract_trip [2026-10-12, 16:03:48 UTC] {subprocess.py:106} INFO - _fail_once(trip_id) [2026-10-12, 16:03:48 UTC] {subprocess.py:106} INFO - File \"/opt/***/pipeline/frames.py\", line 61, in _fail_once [2026-10-12, 16:03:48 UTC] {subprocess.py:106} INFO - raise RuntimeError(f\"simulated crash while extracting {trip_id}; run it again\") [2026-10-12, 16:03:48 UTC] {subprocess.py:106} INFO - RuntimeError: simulated crash while extracting trip-03904; run it again [2026-10-12, 16:03:48 UTC] {subprocess.py:110} INFO - Command exited with return code 1 [2026-10-12, 16:03:49 UTC] {taskinstance.py:3313} ERROR - Task failed with exception Traceback (most recent call last): File \"/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py\", line 768, in _execute_task result = _execute_callable(context=context, **execute_callable_kwargs) ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File \"/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py\", line 734, in _execute_callable return ExecutionCallableRunner( ^^^^^^^^^^^^^^^^^^^^^^^^ File \"/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py\", line 252, in run return self.func(*args, **kwargs) ^^^^^^^^^^^^^^^^^^^^^^^^^^ File \"/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py\", line 424, in wrapper return func(self, *args, **kwargs) ^^^^^^^^^^^^^^^^^^^^^^^^^^^ File \"/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/bash.py\", line 276, in execute raise AirflowException( airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1. [2026-10-12, 16:03:49 UTC] {taskinstance.py:1226} INFO - Marking task as FAILED. dag_id=day09_video_pipeline, task_id=silver_frames, run_id=manual__2026-10-12T16:02:58+00:00, map_index=9, execution_date=20261012T160258, start_date=20261012T160347, end_date=20261012T160349 [2026-10-12, 16:03:49 UTC] {taskinstance.py:341} ▶ Post task execution logs"
+    - generic: "dc425dddad38 ▶ Log message source details [2026-10-12, 16:52:43 UTC] {local_task_job_runner.py:123} ▶ Pre task execution logs [2026-10-12, 16:52:43 UTC] {subprocess.py:78} INFO - Tmp dir root location: /tmp [2026-10-12, 16:52:43 UTC] {subprocess.py:88} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/*** && /home/airflow/***-venv/bin/python -m pipeline.cli extract --trip trip-07304'] [2026-10-12, 16:52:43 UTC] {subprocess.py:99} INFO - Output: [2026-10-12, 16:52:45 UTC] {subprocess.py:106} INFO - Traceback (most recent call last): [2026-10-12, 16:52:45 UTC] {subprocess.py:106} INFO - File \"<frozen runpy>\", line 198, in _run_module_as_main [2026-10-12, 16:52:45 UTC] {subprocess.py:106} INFO - File \"<frozen runpy>\", line 88, in _run_code [2026-10-12, 16:52:45 UTC] {subprocess.py:106} INFO - File \"/opt/***/pipeline/cli.py\", line 65, in <module> [2026-10-12, 16:52:45 UTC] {subprocess.py:106} INFO - rc = main() [2026-10-12, 16:52:45 UTC] {subprocess.py:106} INFO - ^^^^^^ [2026-10-12, 16:52:45 UTC] {subprocess.py:106} INFO - File \"/opt/***/pipeline/cli.py\", line 59, in main [2026-10-12, 16:52:45 UTC] {subprocess.py:106} INFO - out = frames.extract_trip(a.trip) [2026-10-12, 16:52:45 UTC] {subprocess.py:106} INFO - ^^^^^^^^^^^^^^^^^^^^^^^^^^^ [2026-10-12, 16:52:45 UTC] {subprocess.py:106} INFO - File \"/opt/***/pipeline/frames.py\", line 66, in extract_trip [2026-10-12, 16:52:45 UTC] {subprocess.py:106} INFO - _fail_once(trip_id) [2026-10-12, 16:52:45 UTC] {subprocess.py:106} INFO - File \"/opt/***/pipeline/frames.py\", line 61, in _fail_once [2026-10-12, 16:52:45 UTC] {subprocess.py:106} INFO - raise RuntimeError(f\"simulated crash while extracting {trip_id}; run it again\") [2026-10-12, 16:52:45 UTC] {subprocess.py:106} INFO - RuntimeError: simulated crash while extracting trip-07304; run it again [2026-10-12, 16:52:45 UTC] {subprocess.py:110} INFO - Command exited with return code 1 [2026-10-12, 16:52:45 UTC] {taskinstance.py:3313} ERROR - Task failed with exception Traceback (most recent call last): File \"/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py\", line 768, in _execute_task result = _execute_callable(context=context, **execute_callable_kwargs) ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ File \"/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py\", line 734, in _execute_callable return ExecutionCallableRunner( ^^^^^^^^^^^^^^^^^^^^^^^^ File \"/home/airflow/.local/lib/python3.11/site-packages/airflow/utils/operator_helpers.py\", line 252, in run return self.func(*args, **kwargs) ^^^^^^^^^^^^^^^^^^^^^^^^^^ File \"/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py\", line 424, in wrapper return func(self, *args, **kwargs) ^^^^^^^^^^^^^^^^^^^^^^^^^^^ File \"/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/bash.py\", line 276, in execute raise AirflowException( airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1. [2026-10-12, 16:52:45 UTC] {taskinstance.py:1226} INFO - Marking task as FAILED. dag_id=day09_video_pipeline, task_id=silver_frames, run_id=manual__2026-10-12T16:51:09+00:00, map_index=19, execution_date=20261012T165109, start_date=20261012T165243, end_date=20261012T165245 [2026-10-12, 16:52:45 UTC] {taskinstance.py:341} ▶ Post task execution logs"
 - region
 - region
 - region

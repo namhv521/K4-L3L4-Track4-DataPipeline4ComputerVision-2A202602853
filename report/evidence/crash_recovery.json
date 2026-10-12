@@ -1,14 +1,14 @@
 {
   "student_id": "2A202602853",
-  "run_id": "manual__2026-10-12T16:02:58+00:00",
-  "trip": "trip-03904",
-  "map_index": 9,
+  "run_id": "manual__2026-10-12T16:51:09+00:00",
+  "trip": "trip-07304",
+  "map_index": 19,
   "failed_tasks": 1,
   "upstream_failed_tasks": 7,
   "clear_operations": [
     {
       "task": "silver_frames",
-      "map_index": 9,
+      "map_index": 19,
       "affected_tasks": 1
     },
     {
@@ -19,7 +19,13 @@
   ],
   "silver_rows_after": 1246,
   "unique_frame_ids_after": 1246,
-  "trip_rows_after": 22,
+  "trip_rows_after": 34,
   "dataset_version_before": "851b6745b02b",
-  "dataset_version_after": "851b6745b02b"
+  "dataset_version_after": "851b6745b02b",
+  "trip_selection": {
+    "last_five_digits": "02853",
+    "numeric_value": 2853,
+    "trip_count": 26,
+    "map_index": 19
+  }
 }

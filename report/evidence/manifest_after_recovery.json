@@ -12,8 +12,8 @@
   },
   "trips_by_split": {
     "test": 4,
-    "train": 18,
-    "val": 4
+    "val": 4,
+    "train": 18
   },
   "manifest_sha256": "051938af7fbc52cc1da4abd344ae3fd4f8d21d744b11e11bf892a214087014a8",
   "rules": {
@@ -39,5 +39,5 @@
       "drive_a": "636ba1a98dfc5ba665d1c935e1d2064e69f4df360ff9ffbd15795957d5e7e9aa"
     }
   },
-  "created_at": "2026-10-12T16:07:36.687765+00:00"
+  "created_at": "2026-10-12T16:56:23.981715+00:00"
 }

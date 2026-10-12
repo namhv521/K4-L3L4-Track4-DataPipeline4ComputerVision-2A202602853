@@ -7,9 +7,9 @@
 | Họ và tên | Hoàng Văn Nam |
 | MSSV (đúng bằng `LAB_STUDENT_ID` trong `.env`) | 2A202602853 |
 | GitHub | https://github.com/namhv521/K4-L3L4-Track4-DataPipeline4ComputerVision-2A202602853 |
-| Trip dùng cho bài tập sập và chạy lại (xem GUIDE, bước 5) | `trip-03904` |
+| Trip dùng cho bài tập sập và chạy lại (xem GUIDE, bước 5) | `trip-07304` |
 
-MSSV có chữ A nên lệnh `int(MSSV)` trong GUIDE không chạy trực tiếp. Tôi giữ `LAB_STUDENT_ID=2A202602853` cho split, chỉ bỏ chữ A khi chọn trip: `2202602853 % 26 = 9`; phần tử thứ 10 trong danh sách trip đã sắp xếp là `trip-03904`.
+MSSV có chữ A nên lệnh `int(MSSV)` trong GUIDE không chạy trực tiếp. Theo lựa chọn của tôi, dùng 5 số cuối để chọn trip: `int("02853") % 26 = 19`; phần tử thứ 20 trong danh sách trip đã sắp xếp là `trip-07304`. Giữ nguyên `LAB_STUDENT_ID=2A202602853` cho split.
 
 ## Kết quả cuối
 
@@ -104,7 +104,7 @@ Thử ghi đè biến môi trường cho riêng lệnh Bước 4 bằng `2A20260
 ### Câu 8
 Đọc phần `lineage` trong `manifest.json` của dataset bạn. Trả lời "dataset này được tạo từ dữ liệu nào?" bằng chính nội dung đó. Nếu một người hỏi 3 tháng sau, thông tin nào giúp tái tạo lại đúng dataset này?
 
-Manifest của dataset `851b6745b02b` ghi `bronze.raw_telemetry_a=0`, `bronze.raw_telemetry_b=0`, `bronze.trips_raw=0`, `bronze.video_files=1`; `silver.frames=25`, `silver.telemetry=0`, `silver.frames_flagged=0`, `silver.frame_telemetry=0` (snapshot DAG đầu tiên lưu ở `report/evidence/manifest_before_crash.json`).
+Manifest của dataset `851b6745b02b` ghi `bronze.raw_telemetry_a=0`, `bronze.raw_telemetry_b=0`, `bronze.trips_raw=0`, `bronze.video_files=1`; `silver.frames=25`, `silver.telemetry=0`, `silver.frames_flagged=0`, `silver.frame_telemetry=0` (snapshot trước lần sập trip-07304 lưu ở `report/evidence/manifest_before_crash.json`).
 Video A có SHA-256 `636ba1a98dfc5ba665d1c935e1d2064e69f4df360ff9ffbd15795957d5e7e9aa`; video B có `bfa62703f645ff77a8578ae3fc74a00881140d38a404d43c8e2af265bbee9fdc`. Gold gồm 436 khung A và 583 khung B, lọc đen/mờ/gần trùng/mất đồng bộ, rồi chia theo trip có phân tầng theo drive.
 Để tái tạo sau 3 tháng cần giữ các snapshot Delta nêu trên, video khớp SHA-256, manifest liệt kê frame/split, metadata trip và offset đồng hồ, MSSV, mã nguồn/config và phiên bản môi trường. `dataset_version` nhận diện danh sách frame/split; chỉ số version Delta không đủ nếu lake đã reset hoặc lịch sử đã bị xóa.
 
@@ -113,9 +113,9 @@ Video A có SHA-256 `636ba1a98dfc5ba665d1c935e1d2064e69f4df360ff9ffbd15795957d5e
 ### Câu 9
 Mô tả chính xác điều xảy ra khi trip của bạn sập rồi chạy lại: bao nhiêu task chuyển đỏ, bao nhiêu task `upstream_failed`, bạn clear gì, dữ liệu có nhân đôi không, `dataset_version` có đổi không? Bằng chứng (ảnh, số) là gì?
 
-Run `manual__2026-10-12T16:02:58+00:00` có đúng 1 task đỏ: `silver_frames[9]`, log ghi `simulated crash while extracting trip-03904; run it again`; 7 task downstream chuyển `upstream_failed`. Tôi tắt lựa chọn Downstream và clear riêng index 9 (Affected Tasks = 1); task này thành công ở try 2, 25 trip còn lại vẫn try 1.
+Run `manual__2026-10-12T16:51:09+00:00` có đúng 1 task đỏ: `silver_frames[19]`, log ghi `simulated crash while extracting trip-07304; run it again`; 7 task downstream chuyển `upstream_failed`. Tôi tắt lựa chọn Downstream và clear riêng index 19 (Affected Tasks = 1); task này thành công ở try 2, 25 trip còn lại vẫn try 1.
 Thực tế trên Airflow 2.10.5, 7 task `upstream_failed` không tự quay về chạy sau khi clear riêng task đỏ như GUIDE mô tả. Tôi clear thêm `dbt_run_silver` cùng downstream (Affected Tasks = 7), không chọn upstream. Đây là 7 task chạy lần đầu sau khi hết chặn; chỉ 1 task trích khung được chạy lại. DAG kết thúc với 37/37 task instance thành công.
-Silver có 1.246 dòng và 1.246 `frame_id` duy nhất; riêng trip-03904 có 22 khung, không nhân đôi. Dataset sau hồi phục vẫn `851b6745b02b`, 1.019 khung với split 689/151/179, bằng trước lỗi.
+Silver có 1.246 dòng và 1.246 `frame_id` duy nhất; riêng trip-07304 có 34 khung, không nhân đôi. Dataset sau hồi phục vẫn `851b6745b02b`, 1.019 khung với split 689/151/179, bằng trước lỗi.
 Bằng chứng: `report/evidence/crash_recovery.json`, `recovered_task_instances.json`, `manifest_before_crash.json`, `manifest_after_recovery.json`; ảnh `airflow_crash_log.png`, `airflow_clear_one.png`, `airflow_after_clear_one.png`, `airflow_clear_downstream.png`, `airflow_recovered_graph.png`.
 
 ### Câu 10
