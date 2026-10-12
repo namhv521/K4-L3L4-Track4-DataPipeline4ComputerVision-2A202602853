@@ -21,7 +21,12 @@
 ### Câu 1
 Liệt kê **ít nhất 4 khác biệt** giữa telemetry nguồn A và nguồn B mà bạn thấy ở bronze. Vì sao pipeline giữ **mỗi nguồn một bảng bronze** và để mọi cột ở dạng chữ, thay vì gộp và ép kiểu ngay?
 
-(trả lời ở đây)
+> 1.Timestamp: Nguồn A dùng ts_utc theo định dạng ISO 8601, còn B dùng timestamp_ms tính bằng mili giây Unix
+> 2.Tốc độ: A dùng speed_mps (m/s), B dùng spd_kmh (km/h).
+> 3.Hướng di chuyển: A dùng heading_deg, B dùng hdg.
+> 4.Tọa độ GPS: A dùng lat, lon, còn B dùng latitude, longitude.
+> 5.Chân ga, phanh: A dùng gas, brake với giá trị dạng tỷ lệ; B dùng throttle_pct, brake_pct theo phần trăm.
+> 6.Góc lái: A dùng steer, B dùng steering.
 
 ## Bước 2 · Silver telemetry
 
